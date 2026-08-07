@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pangkat Nol dan Pangkat Negatif</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <a class="back-link" href="index.html">&larr; Kembali ke Bilangan Berpangkat</a>
+  <h1>Pangkat Nol dan Pangkat Negatif</h1>
+
+  <h2>Tujuan Pembelajaran</h2>
+  <p>Setelah mempelajari materi ini, siswa diharapkan mampu:</p>
+  <ol>
+    <li><strong>Menjelaskan</strong> arti dari a<sup>0</sup> dengan a &ne; 0</li>
+    <li><strong>Menjelaskan</strong> arti dari a<sup>&minus;n</sup> sebagai kebalikan dari a<sup>n</sup></li>
+    <li><strong>Menghitung</strong> nilai bilangan berpangkat nol dan negatif</li>
+    <li><strong>Mengubah</strong> bentuk pangkat negatif ke bentuk pangkat positif</li>
+    <li><strong>Menerapkan</strong> sifat-sifat pangkat negatif dalam perhitungan</li>
+  </ol>
+
+  <hr>
+
+  <h2>A. Pangkat Nol</h2>
+  <h3>Rumus</h3>
+  <div class="formula">a<sup>0</sup> = 1</div>
+  <p>dengan a &ne; 0 (bilangan real apa pun yang tidak nol, jika dipangkatkan 0 hasilnya 1).</p>
+
+  <div class="callout">
+    <strong>Penting!</strong> 0<sup>0</sup> tidak terdefinisi!
+  </div>
+
+  <h3>Pembuktian</h3>
+  <p>Kita gunakan sifat pembagian bilangan berpangkat:</p>
+  <div class="formula">
+    <span class="frac"><span class="num">a<sup>n</sup></span><span class="den">a<sup>n</sup></span></span> = a<sup>n&minus;n</sup> = a<sup>0</sup>
+  </div>
+  <p>Di sisi lain:</p>
+  <div class="formula">
+    <span class="frac"><span class="num">a<sup>n</sup></span><span class="den">a<sup>n</sup></span></span> = 1
+  </div>
+  <p>Karena kedua bentuk sama, maka:</p>
+  <div class="formula">a<sup>0</sup> = 1</div>
+
+  <h3>Contoh 1: Pangkat Nol</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Bilangan</th><th>Hasil</th></tr>
+    <tr><td>5<sup>0</sup></td><td>1</td></tr>
+    <tr><td>(&minus;5)<sup>0</sup></td><td>1</td></tr>
+    <tr><td>(1/3)<sup>0</sup></td><td>1</td></tr>
+    <tr><td>100<sup>0</sup></td><td>1</td></tr>
+    <tr><td>a<sup>0</sup></td><td>1 (dengan a &ne; 0)</td></tr>
+  </table>
+  </div>
+
+  <h2>B. Pangkat Negatif</h2>
+  <h3>Rumus</h3>
+  <div class="formula">a<sup>&minus;n</sup> = <span class="frac"><span class="num">1</span><span class="den">a<sup>n</sup></span></span></div>
+  <p>dengan a &ne; 0, serta n bilangan bulat positif.</p>
+  <p>Artinya: <strong>pangkat negatif</strong> adalah kebalikan (resiprokal) dari pangkat positifnya.</p>
+
+  <h3>Pembuktian</h3>
+  <p>Kita gunakan sifat pembagian:</p>
+  <div class="formula">
+    a<sup>&minus;n</sup> = a<sup>0&minus;n</sup> = <span class="frac"><span class="num">a<sup>0</sup></span><span class="den">a<sup>n</sup></span></span> = <span class="frac"><span class="num">1</span><span class="den">a<sup>n</sup></span></span>
+  </div>
+
+  <h3>Contoh 2: Mengubah Pangkat Negatif ke Positif</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Bentuk Pangkat Negatif</th><th>Bentuk Positif</th><th>Hasil</th></tr>
+    <tr><td>2<sup>&minus;3</sup></td><td><span class="frac"><span class="num">1</span><span class="den">2<sup>3</sup></span></span></td><td><span class="frac"><span class="num">1</span><span class="den">8</span></span></td></tr>
+    <tr><td>5<sup>&minus;2</sup></td><td><span class="frac"><span class="num">1</span><span class="den">5<sup>2</sup></span></span></td><td><span class="frac"><span class="num">1</span><span class="den">25</span></span></td></tr>
+    <tr><td>(&minus;3)<sup>&minus;2</sup></td><td><span class="frac"><span class="num">1</span><span class="den">(&minus;3)<sup>2</sup></span></span></td><td><span class="frac"><span class="num">1</span><span class="den">9</span></span></td></tr>
+    <tr><td>10<sup>&minus;4</sup></td><td><span class="frac"><span class="num">1</span><span class="den">10<sup>4</sup></span></span></td><td><span class="frac"><span class="num">1</span><span class="den">10.000</span></span> = 0,0001</td></tr>
+  </table>
+  </div>
+
+  <div class="callout">
+    <strong>Perhatikan:</strong> (&minus;3)<sup>&minus;2</sup> = 1/9 (positif), sedangkan &minus;3<sup>&minus;2</sup> = &minus;1/9 (negatif). Beda tipis!
+  </div>
+
+  <h3>Contoh 3: Perkalian dengan Pangkat Negatif</h3>
+  <p>Sederhanakan bentuk berikut!</p>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Soal</th><th>Penyelesaian</th></tr>
+    <tr><td>2<sup>3</sup> &times; 2<sup>&minus;1</sup></td><td>2<sup>3+(&minus;1)</sup> = 2<sup>2</sup> = 4</td></tr>
+    <tr><td>3<sup>2</sup> &times; (&minus;3)<sup>&minus;4</sup></td><td>(&minus;3)<sup>2+(&minus;4)</sup> = (&minus;3)<sup>&minus;2</sup> = 1/9</td></tr>
+    <tr><td>x<sup>2</sup> &times; x<sup>&minus;5</sup></td><td>x<sup>2+(&minus;5)</sup> = x<sup>&minus;3</sup></td></tr>
+    <tr><td>y<sup>&minus;4</sup> &times; y<sup>7</sup></td><td>y<sup>&minus;4+7</sup> = y<sup>3</sup></td></tr>
+  </table>
+  </div>
+
+  <h3>Contoh 4: Pembagian dengan Pangkat Negatif</h3>
+  <p>Sederhanakan bentuk berikut!</p>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Soal</th><th>Penyelesaian</th></tr>
+    <tr><td>2<sup>3</sup> &divide; 2<sup>5</sup></td><td>2<sup>3&minus;5</sup> = 2<sup>&minus;2</sup> = 1/4</td></tr>
+    <tr><td>(&minus;4)<sup>2</sup> &divide; (&minus;4)<sup>6</sup></td><td>(&minus;4)<sup>2&minus;6</sup> = (&minus;4)<sup>&minus;4</sup> = 1/256</td></tr>
+    <tr><td>x<sup>3</sup> &divide; x<sup>7</sup></td><td>x<sup>3&minus;7</sup> = x<sup>&minus;4</sup></td></tr>
+  </table>
+  </div>
+
+  <h2>C. Pangkat Negatif di Penyebut</h2>
+  <h3>Rumus</h3>
+  <div class="formula"><span class="frac"><span class="num">1</span><span class="den">a<sup>&minus;n</sup></span></span> = a<sup>n</sup></div>
+
+  <h3>Pembuktian</h3>
+  <div class="formula">
+    <span class="frac"><span class="num">1</span><span class="den">a<sup>&minus;n</sup></span></span> = <span class="frac"><span class="num">1</span><span class="den">1/a<sup>n</sup></span></span> = a<sup>n</sup>
+  </div>
+
+  <h3>Contoh 5: Pecahan Bertingkat</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Soal</th><th>Penyelesaian</th></tr>
+    <tr><td>1 &divide; 2<sup>&minus;3</sup></td><td>2<sup>3</sup> = 8</td></tr>
+    <tr><td>1 &divide; (&minus;5)<sup>&minus;2</sup></td><td>(&minus;5)<sup>2</sup> = 25</td></tr>
+    <tr><td>1 &divide; a<sup>&minus;5</sup></td><td>a<sup>5</sup></td></tr>
+  </table>
+  </div>
+
+  <h2>D. Perpangkatan dari Pecahan</h2>
+  <h3>Rumus</h3>
+  <div class="formula">
+    <span class="frac"><span class="num">a</span><span class="den">b</span></span><sup>&minus;n</sup> = <span class="frac"><span class="num">b</span><span class="den">a</span></span><sup>n</sup> = <span class="frac"><span class="num">b<sup>n</sup></span><span class="den">a<sup>n</sup></span></span>
+  </div>
+
+  <h3>Pembuktian</h3>
+  <div class="formula">
+    <span class="frac"><span class="num">a</span><span class="den">b</span></span><sup>&minus;n</sup> = <span class="frac"><span class="num">a<sup>&minus;n</sup></span><span class="den">b<sup>&minus;n</sup></span></span> = <span class="frac"><span class="num">1/a<sup>n</sup></span><span class="den">1/b<sup>n</sup></span></span> = <span class="frac"><span class="num">b<sup>n</sup></span><span class="den">a<sup>n</sup></span></span> = <span class="frac"><span class="num">b</span><span class="den">a</span></span><sup>n</sup>
+  </div>
+
+  <h3>Contoh 6: Pecahan Dipangkatkan Negatif</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Soal</th><th>Penyelesaian</th></tr>
+    <tr><td>(1/2)<sup>&minus;3</sup></td><td>(2/1)<sup>3</sup> = 2<sup>3</sup> = 8</td></tr>
+    <tr><td>(1/3)<sup>&minus;2</sup></td><td>(3/1)<sup>2</sup> = 3<sup>2</sup> = 9</td></tr>
+    <tr><td>(1/5)<sup>&minus;1</sup></td><td>(5/1)<sup>1</sup> = 5</td></tr>
+  </table>
+  </div>
+
+  <h2>E. Tabel Perbandingan</h2>
+  <p>Perhatikan pola berikut untuk basis 2:</p>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Bentuk</th><th>Nilai</th><th>Bentuk</th><th>Nilai</th></tr>
+    <tr><td>2<sup>4</sup></td><td>16</td><td>2<sup>&minus;1</sup></td><td>1/2</td></tr>
+    <tr><td>2<sup>3</sup></td><td>8</td><td>2<sup>&minus;2</sup></td><td>1/4</td></tr>
+    <tr><td>2<sup>2</sup></td><td>4</td><td>2<sup>&minus;3</sup></td><td>1/8</td></tr>
+    <tr><td>2<sup>1</sup></td><td>2</td><td>2<sup>&minus;4</sup></td><td>1/16</td></tr>
+    <tr><td>2<sup>0</sup></td><td>1</td><td>&mdash;</td><td>&mdash;</td></tr>
+  </table>
+  </div>
+  <div class="callout">
+    <strong>Pola:</strong> Semakin besar pangkat positif, semakin besar nilainya. Semakin besar pangkat negatif, semakin kecil nilainya (mendekati 0).
+  </div>
+
+  <h2>F. Contoh Penerapan dalam Sains</h2>
+  <h3>Contoh 7: Notasi Ilmiah</h3>
+  <p>Dalam sains, bilangan yang sangat kecil sering ditulis dengan pangkat negatif.</p>
+  <div class="formula">
+    0,001 = 10<sup>&minus;3</sup>
+    <br>0,000001 = 10<sup>&minus;6</sup>
+    <br>0,000000001 = 10<sup>&minus;9</sup>
+  </div>
+  <p><strong>Contoh:</strong> Diameter sebuah bakteri adalah 5 &times; 10<sup>&minus;6</sup> meter. Artinya:</p>
+  <div class="formula">5 &times; 10<sup>&minus;6</sup> = 5 &times; <span class="frac"><span class="num">1</span><span class="den">10<sup>6</sup></span></span> = <span class="frac"><span class="num">5</span><span class="den">1.000.000</span></span> = 0,000005 meter</div>
+  <p>Bilangan yang sangat kecil seperti diameter bakteri ini sulit ditulis panjang-panjang, makanya digunakan notasi pangkat negatif.</p>
+
+  <h3>Contoh 8: Radioaktivitas</h3>
+  <p>Massa suatu zat radioaktif setelah t jam dirumuskan M = M<sub>0</sub> &times; 2<sup>&minus;t</sup>. Jika mula-mula massa M<sub>0</sub> = 160 gram, berapa massa setelah 3 jam?</p>
+  <p><strong>Penyelesaian:</strong></p>
+  <div class="formula">
+    M = 160 &times; 2<sup>&minus;3</sup>
+    <br>M = 160 &times; <span class="frac"><span class="num">1</span><span class="den">2<sup>3</sup></span></span>
+    <br>M = 160 &times; <span class="frac"><span class="num">1</span><span class="den">8</span></span>
+    <br>M = 20 gram
+  </div>
+  <p>Jadi, massa setelah 3 jam adalah <strong>20 gram</strong>.</p>
+
+  <h2>G. Rangkuman</h2>
+  <div class="table-wrap">
+  <table>
+    <tr><th>No</th><th>Konsep</th><th>Rumus</th><th>Contoh</th></tr>
+    <tr><td>1</td><td>Pangkat nol</td><td>a<sup>0</sup> = 1</td><td>2<sup>0</sup> = 1, (&minus;3)<sup>0</sup> = 1</td></tr>
+    <tr><td>2</td><td>Pangkat negatif</td><td>a<sup>&minus;n</sup> = 1/a<sup>n</sup></td><td>2<sup>&minus;3</sup> = 1/8</td></tr>
+    <tr><td>3</td><td>Negatif di penyebut</td><td>1/a<sup>&minus;n</sup> = a<sup>n</sup></td><td>1/2<sup>&minus;2</sup> = 4</td></tr>
+    <tr><td>4</td><td>Perkalian</td><td>a<sup>m</sup> &times; a<sup>n</sup> = a<sup>m+n</sup></td><td>2<sup>3</sup> &times; 2<sup>&minus;1</sup> = 2<sup>2</sup> = 4</td></tr>
+    <tr><td>5</td><td>Pecahan negatif</td><td>(a/b)<sup>&minus;n</sup> = (b/a)<sup>n</sup></td><td>(1/2)<sup>&minus;3</sup> = 2<sup>3</sup> = 8</td></tr>
+  </table>
+  </div>
+
+  <div class="callout tips">
+    💡 <strong>Tips:</strong> Ingat saja &ldquo;<strong>Pangkat negatif = kebalikan</strong>&rdquo;. Kalau ragu, ubah dulu ke bentuk positif dengan cara membalik (resiprokal), baru dihitung.
+  </div>
+
+  <h2>H. Latihan Soal</h2>
+  <p>Kerjakan soal-soal berikut!</p>
+  <ol>
+    <li>Hitung 3<sup>0</sup> + (&minus;2)<sup>0</sup>!</li>
+    <li>Nyatakan 4<sup>&minus;3</sup> dalam bentuk pecahan biasa!</li>
+    <li>Sederhanakan 2<sup>&minus;2</sup> &times; 2<sup>5</sup> dalam bentuk pangkat!</li>
+    <li>Hitung nilai (1/2)<sup>&minus;4</sup>!</li>
+    <li>Sederhanakan (1/x)<sup>&minus;3</sup> dalam bentuk pangkat positif!</li>
+    <li>Tuliskan 0,00001 dalam bentuk notasi pangkat negatif basis 10!</li>
+    <li>Jika a = 2, hitung nilai a<sup>&minus;3</sup>!</li>
+    <li>Hitung 5<sup>2</sup> &times; 5<sup>&minus;4</sup>!</li>
+    <li>Sederhanakan (2<sup>&minus;3</sup>)<sup>&minus;2</sup> dalam bentuk pangkat!</li>
+    <li>Mana yang lebih besar: 2<sup>&minus;2</sup> atau 3<sup>&minus;2</sup>?</li>
+  </ol>
+
+  <h3>I. Kunci Jawaban</h3>
+  <ol>
+    <li>3<sup>0</sup> + (&minus;2)<sup>0</sup> = 1 + 1 = 2</li>
+    <li>4<sup>&minus;3</sup> = 1/64</li>
+    <li>2<sup>&minus;2</sup> &times; 2<sup>5</sup> = 2<sup>3</sup> = 8</li>
+    <li>(1/2)<sup>&minus;4</sup> = 2<sup>4</sup> = 16</li>
+    <li>(1/x)<sup>&minus;3</sup> = x<sup>3</sup></li>
+    <li>0,00001 = 10<sup>&minus;5</sup></li>
+    <li>2<sup>&minus;3</sup> = 1/8</li>
+    <li>5<sup>2</sup> &times; 5<sup>&minus;4</sup> = 5<sup>&minus;2</sup> = 1/25</li>
+    <li>(2<sup>&minus;3</sup>)<sup>&minus;2</sup> = 2<sup>6</sup> = 64</li>
+    <li>2<sup>&minus;2</sup> = 1/4 = 0,25, dan 3<sup>&minus;2</sup> = 1/9 &asymp; 0,111. Jadi 2<sup>&minus;2</sup> lebih besar.</li>
+  </ol>
+
+  <div class="subnav">
+    <a href="2-sifat-sifat-operasi.html">
+      <div class="dir">&larr; Subbab sebelumnya</div>
+      <div class="label">Sifat-Sifat Operasi Bilangan Berpangkat</div>
+      <div class="desc">Materi sifat-sifat operasi bilangan berpangkat untuk kelas 8: perkalian, pembagian, perpangkatan, dan contohnya</div>
+    </a>
+    <a class="next" href="4-penerapan-sehari-hari.html">
+      <div class="dir">Subbab berikutnya &rarr;</div>
+      <div class="label">Penerapan Bilangan Berpangkat dalam Kehidupan Sehari-hari</div>
+      <div class="desc">Materi penerapan bilangan berpangkat dalam kehidupan sehari-hari: bunga bank, pertumbuhan bakteri, dosis obat, volume, dan notasi ilmiah</div>
+    </a>
+  </div>
+</div>
+</body>
+</html>
