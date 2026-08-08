@@ -36,7 +36,7 @@
   </div>
 
   <!-- ===================== LAYAR 2: SOAL ===================== -->
-  <div id="screen-quiz" class="quiz-hidden">
+  <div id="screen-quiz" style="display:none;">
     <div class="quiz-topbar">
       <div>
         <div class="quiz-nama">Peserta: <span id="nama-tampil"></span></div>
@@ -53,7 +53,7 @@
   </div>
 
   <!-- ===================== LAYAR 3: HASIL ===================== -->
-  <div id="screen-result" class="quiz-hidden">
+  <div id="screen-result" style="display:none;">
     <div class="quiz-result-summary">
       <div>Hasil Evaluasi untuk <strong id="hasil-nama"></strong></div>
       <div class="quiz-score"><span id="hasil-nilai">0</span><span>/100</span></div>
@@ -238,8 +238,8 @@
     const totalSoal = PG.length;
     const nilaiAkhir = Math.round((totalBenar / totalSoal) * 100);
 
-    document.getElementById('screen-quiz').classList.add('quiz-hidden');
-    document.getElementById('screen-result').classList.remove('quiz-hidden');
+    document.getElementById('screen-quiz').style.display = 'none';
+    document.getElementById('screen-result').style.display = '';
 
     document.getElementById('hasil-nama').textContent = namaSiswa;
     document.getElementById('hasil-nilai').textContent = nilaiAkhir;
@@ -290,8 +290,8 @@
     namaSiswa = document.getElementById('nama-siswa').value.trim();
     if (!namaSiswa) return;
     document.getElementById('nama-tampil').textContent = namaSiswa;
-    document.getElementById('screen-start').classList.add('quiz-hidden');
-    document.getElementById('screen-quiz').classList.remove('quiz-hidden');
+    document.getElementById('screen-start').style.display = 'none';
+    document.getElementById('screen-quiz').style.display = '';
     mulaiTimer();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
