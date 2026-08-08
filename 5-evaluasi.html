@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluasi Bilangan Berpangkat</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <a class="back-link" href="index.html">&larr; Kembali ke Bilangan Berpangkat</a>
+  <h1>Evaluasi Bilangan Berpangkat</h1>
+  <p class="subtitle">Uji pemahamanmu terhadap seluruh materi Bilangan Berpangkat secara interaktif, lengkap dengan waktu pengerjaan dan skor otomatis.</p>
+
+  <!-- ===================== LAYAR 1: MULAI ===================== -->
+  <div id="screen-start">
+    <div class="callout">
+      <strong>Petunjuk Pengerjaan:</strong>
+      <ul style="margin-bottom:0;">
+        <li>Evaluasi terdiri dari <strong>25 soal pilihan ganda</strong>.</li>
+        <li>Waktu pengerjaan <strong>30 menit</strong>. Timer akan berjalan sejak kamu menekan tombol "Mulai Evaluasi".</li>
+        <li>Jika waktu habis, evaluasi akan otomatis diselesaikan dan dinilai berdasarkan jawaban yang sudah terisi.</li>
+        <li>Skor, rincian nilai, dan pembahasan lengkap akan ditampilkan setelah evaluasi selesai.</li>
+      </ul>
+    </div>
+
+    <div class="quiz-intro-box">
+      <div class="quiz-field">
+        <label for="nama-siswa">Tuliskan namamu</label>
+        <input type="text" id="nama-siswa" class="quiz-input" placeholder="Contoh: Andi Saputra" autocomplete="off">
+      </div>
+      <div class="quiz-submit-bar">
+        <button id="btn-mulai" class="quiz-btn" disabled>Mulai Evaluasi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== LAYAR 2: SOAL ===================== -->
+  <div id="screen-quiz" class="quiz-hidden">
+    <div class="quiz-topbar">
+      <div>
+        <div class="quiz-nama">Peserta: <span id="nama-tampil"></span></div>
+        <div class="quiz-progress-text">25 soal pilihan ganda</div>
+      </div>
+      <div class="quiz-timer" id="timer-box">Sisa waktu: <span id="timer-display">30:00</span></div>
+    </div>
+
+    <div id="pg-container"></div>
+
+    <div class="quiz-submit-bar">
+      <button id="btn-selesai" class="quiz-btn">Selesai &amp; Lihat Hasil</button>
+    </div>
+  </div>
+
+  <!-- ===================== LAYAR 3: HASIL ===================== -->
+  <div id="screen-result" class="quiz-hidden">
+    <div class="quiz-result-summary">
+      <div>Hasil Evaluasi untuk <strong id="hasil-nama"></strong></div>
+      <div class="quiz-score"><span id="hasil-nilai">0</span><span>/100</span></div>
+      <div id="hasil-detail" class="quiz-sub"></div>
+      <div id="hasil-waktu" class="quiz-sub"></div>
+    </div>
+
+    <h2 class="quiz-section-title">Pembahasan</h2>
+    <div id="pembahasan-container"></div>
+
+    <div class="quiz-submit-bar">
+      <button id="btn-ulangi" class="quiz-btn secondary">Ulangi Evaluasi</button>
+    </div>
+  </div>
+
+  <div class="subnav">
+    <a href="4-penerapan-sehari-hari.html">
+      <div class="dir">&larr; Subbab sebelumnya</div>
+      <div class="label">Penerapan Bilangan Berpangkat dalam Kehidupan Sehari-hari</div>
+      <div class="desc">Materi penerapan bilangan berpangkat dalam kehidupan sehari-hari: pertumbuhan bakteri, peluruhan zat/dosis obat, volume bangun ruang, notasi ilmiah, dan skala gempa</div>
+    </a>
+    <div class="disabled next">Ini bagian terakhir</div>
+  </div>
+</div>
+
+<script>
+(function(){
+
+  // ===================== BANK SOAL =====================
+  const PG = [
+    { teks:"Bentuk perkalian berulang 6 &times; 6 &times; 6 &times; 6 dapat dituliskan sebagai bilangan berpangkat...",
+      pilihan:["4<sup>6</sup>","6<sup>4</sup>","6 &times; 4","4 &times; 6"], jawaban:1,
+      pembahasan:"6 &times; 6 &times; 6 &times; 6 berarti bilangan 6 dikalikan berulang sebanyak 4 kali, sehingga ditulis 6<sup>4</sup> (basis 6, pangkat 4)." },
+    { teks:"Pada bentuk (&minus;7)<sup>3</sup>, yang menjadi basis dan pangkat berturut-turut adalah...",
+      pilihan:["7 dan 3","3 dan &minus;7","&minus;7 dan 3","&minus;3 dan 7"], jawaban:2,
+      pembahasan:"Karena ditulis dengan tanda kurung (&minus;7)<sup>3</sup>, maka seluruh &minus;7 menjadi basis, dan 3 adalah pangkatnya." },
+    { teks:"Hasil dari &minus;4<sup>2</sup> adalah...",
+      pilihan:["16","&minus;16","8","&minus;8"], jawaban:1,
+      pembahasan:"Tanpa tanda kurung, basisnya adalah 4 (bukan &minus;4). Jadi &minus;4<sup>2</sup> = &minus;(4 &times; 4) = &minus;16." },
+    { teks:"Hasil dari (&minus;4)<sup>2</sup> adalah...",
+      pilihan:["16","&minus;16","8","&minus;8"], jawaban:0,
+      pembahasan:"Karena ada tanda kurung, basisnya &minus;4. (&minus;4)<sup>2</sup> = (&minus;4) &times; (&minus;4) = 16 (pangkat genap menghasilkan bilangan positif)." },
+    { teks:"Mana yang lebih besar antara 2<sup>5</sup> dan 5<sup>2</sup>?",
+      pilihan:["2<sup>5</sup> lebih besar","5<sup>2</sup> lebih besar","Keduanya sama besar","Tidak dapat dibandingkan"], jawaban:0,
+      pembahasan:"2<sup>5</sup> = 32 sedangkan 5<sup>2</sup> = 25. Karena 32 &gt; 25, maka 2<sup>5</sup> lebih besar." },
+
+    { teks:"Bentuk sederhana dari 3<sup>5</sup> &times; 3<sup>2</sup> adalah...",
+      pilihan:["3<sup>7</sup>","3<sup>10</sup>","9<sup>7</sup>","3<sup>3</sup>"], jawaban:0,
+      pembahasan:"Sifat perkalian: a<sup>m</sup> &times; a<sup>n</sup> = a<sup>m+n</sup>. Jadi 3<sup>5</sup> &times; 3<sup>2</sup> = 3<sup>5+2</sup> = 3<sup>7</sup>." },
+    { teks:"Bentuk sederhana dari 4<sup>3</sup> &times; 4<sup>5</sup> adalah...",
+      pilihan:["4<sup>15</sup>","4<sup>8</sup>","16<sup>8</sup>","4<sup>2</sup>"], jawaban:1,
+      pembahasan:"a<sup>m</sup> &times; a<sup>n</sup> = a<sup>m+n</sup>, sehingga 4<sup>3</sup> &times; 4<sup>5</sup> = 4<sup>3+5</sup> = 4<sup>8</sup>." },
+    { teks:"Hasil dari 2<sup>8</sup> &divide; 2<sup>5</sup> adalah...",
+      pilihan:["2<sup>3</sup> = 8","2<sup>13</sup>","2<sup>40</sup>","1<sup>3</sup> = 1"], jawaban:0,
+      pembahasan:"Sifat pembagian: a<sup>m</sup> &divide; a<sup>n</sup> = a<sup>m&minus;n</sup>. Jadi 2<sup>8</sup> &divide; 2<sup>5</sup> = 2<sup>8&minus;5</sup> = 2<sup>3</sup> = 8." },
+    { teks:"Bentuk sederhana dari 7<sup>6</sup> &divide; 7<sup>2</sup> adalah...",
+      pilihan:["7<sup>3</sup>","7<sup>4</sup>","7<sup>8</sup>","7<sup>12</sup>"], jawaban:1,
+      pembahasan:"a<sup>m</sup> &divide; a<sup>n</sup> = a<sup>m&minus;n</sup>, sehingga 7<sup>6</sup> &divide; 7<sup>2</sup> = 7<sup>6&minus;2</sup> = 7<sup>4</sup>." },
+    { teks:"Bentuk sederhana dari (5<sup>3</sup>)<sup>2</sup> adalah...",
+      pilihan:["5<sup>5</sup>","5<sup>6</sup>","5<sup>9</sup>","25<sup>3</sup>"], jawaban:1,
+      pembahasan:"Sifat perpangkatan: (a<sup>m</sup>)<sup>n</sup> = a<sup>m&times;n</sup>. Jadi (5<sup>3</sup>)<sup>2</sup> = 5<sup>3&times;2</sup> = 5<sup>6</sup>." },
+    { teks:"Bentuk sederhana dari (2 &times; 3)<sup>4</sup> adalah...",
+      pilihan:["2<sup>4</sup> &times; 3<sup>4</sup>","2 &times; 3<sup>4</sup>","(2 &times; 3)<sup>4</sup> (tidak bisa disederhanakan)","6<sup>8</sup>"], jawaban:0,
+      pembahasan:"Sifat perpangkatan dari perkalian: (a &times; b)<sup>n</sup> = a<sup>n</sup> &times; b<sup>n</sup>. Jadi (2 &times; 3)<sup>4</sup> = 2<sup>4</sup> &times; 3<sup>4</sup>." },
+
+    { teks:"Nilai dari 9<sup>0</sup> adalah...",
+      pilihan:["0","1","9","tidak terdefinisi"], jawaban:1,
+      pembahasan:"Setiap bilangan (kecuali 0) yang dipangkatkan nol hasilnya selalu 1. Jadi 9<sup>0</sup> = 1." },
+    { teks:"Bentuk positif dari 4<sup>&minus;2</sup> adalah...",
+      pilihan:["1/4<sup>2</sup>","&minus;4<sup>2</sup>","4<sup>2</sup>","4/2"], jawaban:0,
+      pembahasan:"Sifat pangkat negatif: a<sup>&minus;n</sup> = 1/a<sup>n</sup>. Jadi 4<sup>&minus;2</sup> = 1/4<sup>2</sup>." },
+    { teks:"Nilai dari 2<sup>&minus;3</sup> adalah...",
+      pilihan:["1/8","&minus;8","8","&minus;1/8"], jawaban:0,
+      pembahasan:"2<sup>&minus;3</sup> = 1/2<sup>3</sup> = 1/8." },
+    { teks:"Bentuk sederhana dari (2/5)<sup>&minus;1</sup> adalah...",
+      pilihan:["2/5","&minus;2/5","5/2","&minus;5/2"], jawaban:2,
+      pembahasan:"Pangkat negatif pada pecahan membalik posisi pembilang dan penyebut: (a/b)<sup>&minus;1</sup> = b/a. Jadi (2/5)<sup>&minus;1</sup> = 5/2." },
+    { teks:"Nilai dari 10<sup>&minus;2</sup> dalam bentuk desimal adalah...",
+      pilihan:["100","0,1","0,01","&minus;100"], jawaban:2,
+      pembahasan:"10<sup>&minus;2</sup> = 1/10<sup>2</sup> = 1/100 = 0,01." },
+
+    { teks:"Bentuk notasi ilmiah dari 0,00025 adalah...",
+      pilihan:["2,5 &times; 10<sup>4</sup>","2,5 &times; 10<sup>&minus;4</sup>","25 &times; 10<sup>&minus;5</sup>","2,5 &times; 10<sup>&minus;3</sup>"], jawaban:1,
+      pembahasan:"Koma digeser 4 angka ke kanan agar diperoleh 2,5, sehingga 0,00025 = 2,5 &times; 10<sup>&minus;4</sup>." },
+    { teks:"Bentuk notasi ilmiah dari 6.400.000 adalah...",
+      pilihan:["6,4 &times; 10<sup>5</sup>","64 &times; 10<sup>5</sup>","6,4 &times; 10<sup>6</sup>","0,64 &times; 10<sup>7</sup>"], jawaban:2,
+      pembahasan:"Koma digeser 6 angka ke kiri agar diperoleh 6,4, sehingga 6.400.000 = 6,4 &times; 10<sup>6</sup>." },
+    { teks:"Sejenis bakteri membelah menjadi 2 kali lipat setiap 20 menit. Jika mula-mula ada 50 bakteri, jumlah bakteri setelah 1 jam adalah...",
+      pilihan:["100","200","400","50<sup>3</sup>"], jawaban:2,
+      pembahasan:"1 jam = 3 periode (setiap periode 20 menit). Jumlah bakteri = 50 &times; 2<sup>3</sup> = 50 &times; 8 = 400." },
+    { teks:"Pada rumus peluruhan M = M<sub>0</sub> &times; 2<sup>&minus;t</sup>, jika waktu <em>t</em> semakin bertambah maka nilai M akan...",
+      pilihan:["Semakin besar","Semakin kecil","Tetap (tidak berubah)","Tidak dapat ditentukan"], jawaban:1,
+      pembahasan:"Karena 2<sup>&minus;t</sup> = 1/2<sup>t</sup>, semakin besar t maka nilai 2<sup>&minus;t</sup> semakin kecil, sehingga M (misalnya kadar obat atau massa zat radioaktif) juga semakin berkurang seiring waktu." },
+
+    { teks:"Hasil dari 2<sup>5</sup> &minus; 2<sup>3</sup> adalah...",
+      pilihan:["24","4","16","64"], jawaban:0,
+      pembahasan:"2<sup>5</sup> = 32 dan 2<sup>3</sup> = 8, sehingga 2<sup>5</sup> &minus; 2<sup>3</sup> = 32 &minus; 8 = 24." },
+    { teks:"Hasil akhir dari (3<sup>4</sup> &times; 3<sup>2</sup>) &divide; 3<sup>3</sup> sebagai bilangan biasa adalah...",
+      pilihan:["27","9","81","3"], jawaban:0,
+      pembahasan:"(3<sup>4</sup> &times; 3<sup>2</sup>) &divide; 3<sup>3</sup> = 3<sup>4+2</sup> &divide; 3<sup>3</sup> = 3<sup>6</sup> &divide; 3<sup>3</sup> = 3<sup>6&minus;3</sup> = 3<sup>3</sup> = 27." },
+    { teks:"Nilai dari 5<sup>&minus;2</sup> dalam bentuk desimal adalah...",
+      pilihan:["0,04","0,4","25","0,025"], jawaban:0,
+      pembahasan:"5<sup>&minus;2</sup> = 1/5<sup>2</sup> = 1/25 = 0,04." },
+    { teks:"Bentuk notasi ilmiah dari 0,0000032 adalah...",
+      pilihan:["3,2 &times; 10<sup>&minus;6</sup>","3,2 &times; 10<sup>6</sup>","32 &times; 10<sup>&minus;7</sup>","3,2 &times; 10<sup>&minus;5</sup>"], jawaban:0,
+      pembahasan:"Koma digeser 6 angka ke kanan agar diperoleh 3,2, sehingga 0,0000032 = 3,2 &times; 10<sup>&minus;6</sup>." },
+    { teks:"Dosis obat 800 mg berkurang setengahnya setiap jam, mengikuti rumus M = M<sub>0</sub> &times; 2<sup>&minus;t</sup>. Dosis obat yang tersisa setelah 3 jam adalah...",
+      pilihan:["100 mg","200 mg","400 mg","50 mg"], jawaban:0,
+      pembahasan:"M = 800 &times; 2<sup>&minus;3</sup> = 800 &times; 1/8 = 100 mg." }
+  ];
+
+  const WAKTU_TOTAL = 30 * 60; // 30 menit dalam detik
+  let sisaWaktu = WAKTU_TOTAL;
+  let timerInterval = null;
+  let namaSiswa = "";
+  let sudahSelesai = false;
+
+  // ===================== RENDER SOAL =====================
+  function renderSoal(){
+    const pgContainer = document.getElementById('pg-container');
+    PG.forEach((q, i) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      let opsiHtml = '';
+      q.pilihan.forEach((opt, j) => {
+        opsiHtml += `<label class="quiz-option"><input type="radio" name="pg${i}" value="${j}"> ${opt}</label>`;
+      });
+      div.innerHTML = `<p><strong>${i + 1}.</strong> ${q.teks}</p>${opsiHtml}`;
+      pgContainer.appendChild(div);
+    });
+  }
+
+  // ===================== TIMER =====================
+  function formatDetik(total){
+    const m = Math.floor(total / 60);
+    const s = total % 60;
+    return String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }
+
+  function mulaiTimer(){
+    updateTimerTampilan();
+    timerInterval = setInterval(() => {
+      sisaWaktu--;
+      updateTimerTampilan();
+      if (sisaWaktu <= 0) {
+        clearInterval(timerInterval);
+        selesaiEvaluasi(true);
+      }
+    }, 1000);
+  }
+
+  function updateTimerTampilan(){
+    document.getElementById('timer-display').textContent = formatDetik(Math.max(sisaWaktu,0));
+    const timerBox = document.getElementById('timer-box');
+    if (sisaWaktu <= 300) {
+      timerBox.classList.add('warning');
+    }
+  }
+
+  // ===================== PENILAIAN =====================
+  function nilaiEvaluasi(){
+    let skorPG = 0;
+    const detailPG = [];
+    PG.forEach((q, i) => {
+      const dipilih = document.querySelector(`input[name="pg${i}"]:checked`);
+      const jawabanSiswa = dipilih ? parseInt(dipilih.value, 10) : null;
+      const benar = jawabanSiswa === q.jawaban;
+      if (benar) skorPG++;
+      detailPG.push({ jawabanSiswa, benar });
+    });
+
+    return { skorPG, detailPG };
+  }
+
+  function selesaiEvaluasi(otomatis){
+    if (sudahSelesai) return;
+    sudahSelesai = true;
+    clearInterval(timerInterval);
+
+    const hasil = nilaiEvaluasi();
+    const totalBenar = hasil.skorPG;
+    const totalSoal = PG.length;
+    const nilaiAkhir = Math.round((totalBenar / totalSoal) * 100);
+
+    document.getElementById('screen-quiz').classList.add('quiz-hidden');
+    document.getElementById('screen-result').classList.remove('quiz-hidden');
+
+    document.getElementById('hasil-nama').textContent = namaSiswa;
+    document.getElementById('hasil-nilai').textContent = nilaiAkhir;
+    document.getElementById('hasil-detail').textContent =
+      `Jawaban benar: ${totalBenar}/${totalSoal} soal pilihan ganda`;
+
+    const waktuDipakai = WAKTU_TOTAL - Math.max(sisaWaktu, 0);
+    const menitDipakai = Math.floor(waktuDipakai / 60);
+    const detikDipakai = waktuDipakai % 60;
+    document.getElementById('hasil-waktu').textContent = otomatis
+      ? `Waktu 30 menit telah habis — evaluasi diselesaikan otomatis.`
+      : `Waktu pengerjaan: ${menitDipakai} menit ${detikDipakai} detik.`;
+
+    renderPembahasan(hasil);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function renderPembahasan(hasil){
+    const container = document.getElementById('pembahasan-container');
+    let html = '';
+
+    PG.forEach((q, i) => {
+      const d = hasil.detailPG[i];
+      const statusClass = d.benar ? 'benar' : 'salah';
+      const statusLabel = d.benar ? 'Benar' : 'Salah';
+      const jawabanSiswaTeks = d.jawabanSiswa !== null
+        ? `${String.fromCharCode(97 + d.jawabanSiswa)}. ${q.pilihan[d.jawabanSiswa]}`
+        : '(tidak dijawab)';
+      const jawabanBenarTeks = `${String.fromCharCode(97 + q.jawaban)}. ${q.pilihan[q.jawaban]}`;
+
+      html += `<div class="quiz-review-item ${statusClass}">
+        <p><strong>${i + 1}. ${q.teks}</strong><span class="quiz-badge ${statusClass}">${statusLabel}</span></p>
+        <p>Jawabanmu: ${jawabanSiswaTeks}</p>
+        ${d.benar ? '' : `<p>Jawaban benar: ${jawabanBenarTeks}</p>`}
+        <p class="quiz-pembahasan-text">${q.pembahasan}</p>
+      </div>`;
+    });
+
+    container.innerHTML = html;
+  }
+
+  // ===================== EVENT HANDLER =====================
+  document.getElementById('nama-siswa').addEventListener('input', function(){
+    document.getElementById('btn-mulai').disabled = this.value.trim() === '';
+  });
+
+  document.getElementById('btn-mulai').addEventListener('click', function(){
+    namaSiswa = document.getElementById('nama-siswa').value.trim();
+    if (!namaSiswa) return;
+    document.getElementById('nama-tampil').textContent = namaSiswa;
+    document.getElementById('screen-start').classList.add('quiz-hidden');
+    document.getElementById('screen-quiz').classList.remove('quiz-hidden');
+    mulaiTimer();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('btn-selesai').addEventListener('click', function(){
+    const totalSoal = PG.length;
+    let terjawab = 0;
+    PG.forEach((q, i) => { if (document.querySelector(`input[name="pg${i}"]:checked`)) terjawab++; });
+
+    if (terjawab < totalSoal) {
+      const lanjut = confirm(`Kamu baru menjawab ${terjawab} dari ${totalSoal} soal. Yakin ingin menyelesaikan evaluasi sekarang?`);
+      if (!lanjut) return;
+    }
+    selesaiEvaluasi(false);
+  });
+
+  document.getElementById('btn-ulangi').addEventListener('click', function(){
+    window.location.reload();
+  });
+
+  renderSoal();
+
+})();
+</script>
+</body>
+</html>
